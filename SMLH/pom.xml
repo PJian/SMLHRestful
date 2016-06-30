@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>SMLH</groupId>
+    <artifactId>SMLH</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <properties>
+        <javax.ws.rs_version>2.0.1</javax.ws.rs_version>
+        <com.google.code.gson_version>2.2.4</com.google.code.gson_version>
+        <common.io_version>2.0.1</common.io_version>
+        <resteasy-multipart-provider_version>2.2.0.GA</resteasy-multipart-provider_version>
+        <resteasy-jaxrs_version>2.2.1.GA</resteasy-jaxrs_version>
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+        <smlh-war>ROOT</smlh-war>
+        <org.apache.maven.plugins_maven-war-plugin_version>2.6</org.apache.maven.plugins_maven-war-plugin_version>
+        <org.slf4j_version>1.7.5</org.slf4j_version>
+        <jersey-version>1.19.1</jersey-version>
+        <javax.servlet-api_version>3.1.0</javax.servlet-api_version>
+        <jaxrs-ri_version>2.4</jaxrs-ri_version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-bundle -->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-bundle</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.bundles</groupId>
+            <artifactId>jaxrs-ri</artifactId>
+            <version>${jaxrs-ri_version}</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-multipart</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-servlet -->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${javax.ws.rs_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${com.google.code.gson_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>${resteasy-jaxrs_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <version>${resteasy-multipart-provider_version}</version>
+        </dependency>
+
+        <!-- optional, good for handle I/O task -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${common.io_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api_version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${org.slf4j_version}</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+        <finalName>${smlh-war}</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-war-plugin</artifactId>
+              <version>${org.apache.maven.plugins_maven-war-plugin_version}</version>
+
+          </plugin>
+      </plugins>
+    </build>
+
+</project>
